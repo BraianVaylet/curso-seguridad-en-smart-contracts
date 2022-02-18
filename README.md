@@ -11,6 +11,11 @@
 - Clase7: [DelegateCall](#DelegateCall)
 - Clase8: [Gas insuficiente](#Gas-insuficiente)
 - Clase9: [Forzar envío de Ethers](#Forzar-envío-de-Ethers)
+- Clase10: [Reentrancy simple](#Reentrancy-simple)
+- Clase11: [Reentrancy cruzado](#Reentrancy-cruzado)
+- Clase12: [Denegación por reversión](#Denegación-por-reversión)
+- Clase13: [Denegación por límite de gas](#Denegación-por-límite-de-gas)
+- Clase14: [Desafío](#Desafío)
 
 ## Importancia de la seguridad en el desarrollo de contratos
 
@@ -106,4 +111,41 @@ Existe una llamada similar a call, en sentido de estructura, por ejemplo delegat
 
 ## Forzar envío de Ethers
 
-- **NO USAR** la función SelfDestruct, esta función transfiere los fondos del contrato a otra cuenta y luego elimina el contacto de la red. El problema es que no hay garantías de que suceda de ese modo, ya se de que transfiera los fondos como de que se elimine por completo de la red, incluso puede llegar a eliminarse de algunos nodos y de otros no, generando luego problemas al sincronizar...
+- **NO USAR** la función **SelfDestruct**, esta función transfiere los fondos del contrato a otra cuenta y luego elimina el contacto de la red. El problema es que no hay garantías de que suceda de ese modo, ya se de que transfiera los fondos como de que se elimine por completo de la red, incluso puede llegar a eliminarse de algunos nodos y de otros no, generando luego problemas al sincronizar...
+
+## Reentrancy simple
+
+***Reentrancy simple:*** ataca a una función especifica llamándola nuevamente antes de cerra su ejecución, creando un ciclo hasta vaciar la cuenta.
+
+> Links:
+>
+> - [https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/Reentrancy.sol](https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/Reentrancy.sol)
+
+## Reentrancy cruzado
+
+***Reentrancy cruzado:*** ataca primero a una función usándola como llave de entrada al contrato, para poder atacar a una segunda función y asi poder acreditarle fondos a alguna cuenta.
+
+> Links:
+>
+> - [https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/ReentrancyCross.sol](https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/ReentrancyCross.sol)
+
+## Denegación por reversión
+
+El contrato atacante utiliza la función revert() para interrumpir el correcto funcionamiento de nuestro contrato.
+
+> Links:
+>
+> - [https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/DoS.sol](https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/DoS.sol)
+
+## Denegación por límite de gas
+
+...
+
+## Desafío
+
+Ver ```./contracts/DesafioFinal.sol```
+
+> Links:
+>
+> - [https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/DesafioFinal.sol](https://github.com/platzi/curso-seguridad-smart-contracts/blob/main/contratos/DesafioFinal.sol)
+> - [Juego para hackear SmartContracts - https://capturetheether.com/](https://capturetheether.com/)
